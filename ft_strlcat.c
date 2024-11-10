@@ -6,7 +6,7 @@
 /*   By: ihhadjal <ihhadjal@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/08 21:52:50 by ihhadjal          #+#    #+#             */
-/*   Updated: 2024/11/09 13:13:16 by ihhadjal         ###   ########.fr       */
+/*   Updated: 2024/11/10 18:33:57 by ihhadjal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,5 +39,5 @@ size_t	ft_strlcat(char *dst, const char *src, size_t size)
 // {
 // 	char dst[] = "iheb";
 // 	char src[] = "crack";
-// 	printf("%zu",ft_strlcat(dst, src, 10));	
+// 	printf("%zu",ft_strlcat(dst, src, 2));	
 // }

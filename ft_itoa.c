@@ -6,7 +6,7 @@
 /*   By: ihhadjal <ihhadjal@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/10 11:20:59 by ihhadjal          #+#    #+#             */
-/*   Updated: 2024/11/10 12:04:21 by ihhadjal         ###   ########.fr       */
+/*   Updated: 2024/11/10 13:21:26 by ihhadjal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,8 +56,4 @@ char	*ft_itoa(int n)
 		len--;
 	}
 	return (str);
-}
-
-int main(void)
-{
 }

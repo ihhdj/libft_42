@@ -1,34 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strchr.c                                        :+:      :+:    :+:   */
+/*   ft_strmapi.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ihhadjal <ihhadjal@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/08 21:51:12 by ihhadjal          #+#    #+#             */
-/*   Updated: 2024/11/10 18:20:47 by ihhadjal         ###   ########.fr       */
+/*   Created: 2024/11/10 13:22:25 by ihhadjal          #+#    #+#             */
+/*   Updated: 2024/11/10 13:31:20 by ihhadjal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strchr(const char *s, int c)
+char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 {
-	size_t	i;
+	unsigned int	i;
+	char			*res;
 
 	i = 0;
+	res = (char *)malloc(sizeof(char) * ft_strlen(s) + 1);
+	if (!res)
+		return (NULL);
 	while (s[i])
 	{
-		if (s[i] == (char)c)
-			return ((char *)s + i);
+		res[i] = f(i, s[i]);
 		i++;
 	}
-	return (NULL);
+	res[i] = '\0';
+	return (res);
 }
-
-// int main(void)
-// {
-// 	char s[] = "iheb crack";
-// 	int c = 'c';
-// 	printf("%s", ft_strchr(s, c));
-// }
