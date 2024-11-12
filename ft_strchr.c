@@ -6,7 +6,7 @@
 /*   By: ihhadjal <ihhadjal@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/08 21:51:12 by ihhadjal          #+#    #+#             */
-/*   Updated: 2024/11/10 18:20:47 by ihhadjal         ###   ########.fr       */
+/*   Updated: 2024/11/11 14:44:27 by ihhadjal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,12 +23,13 @@ char	*ft_strchr(const char *s, int c)
 			return ((char *)s + i);
 		i++;
 	}
+	if (s[i] == (char)c)
+		return ((char *)s + i);
 	return (NULL);
 }
 
 // int main(void)
 // {
-// 	char s[] = "iheb crack";
-// 	int c = 'c';
-// 	printf("%s", ft_strchr(s, c));
+// 	char s[] = "tripouille"
+// 	printf("%s", ft_strchr(s, 0));
 // }

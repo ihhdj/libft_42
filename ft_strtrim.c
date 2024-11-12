@@ -6,22 +6,11 @@
 /*   By: ihhadjal <ihhadjal@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/10 14:21:29 by ihhadjal          #+#    #+#             */
-/*   Updated: 2024/11/10 18:33:09 by ihhadjal         ###   ########.fr       */
+/*   Updated: 2024/11/12 19:20:55 by ihhadjal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-
-char	test(char c, const char *set)
-{
-	while (*set)
-	{
-		if (c == *set)
-			return (1);
-		set++;
-	}
-	return (0);
-}
 
 char	*ft_strtrim(char const *s1, char const *set)
 {
@@ -29,25 +18,28 @@ char	*ft_strtrim(char const *s1, char const *set)
 	int		end;
 	char	*res;
 
+	if (!s1)
+		return (NULL);
+	if (!set)
+		return (ft_strdup(s1));
 	start = 0;
 	end = ft_strlen(s1) - 1;
-	while (test(s1[start], set))
+	while (s1[start] && ft_strchr(set, s1[start]))
 		start++;
-	while (test(s1[end], set))
-		end--;
-	res = (char *)malloc(sizeof(char) * (end - start) + 2);
-	if (!res)
-		return (res);
-	ft_strlcpy(res, &s1[start], end - start + 2);
+	if (s1[start])
+	{
+		while (s1[end] && ft_strchr(set, s1[end]))
+			end--;				
+	}
+	res = ft_substr(s1, start, end - start + 1);
 	return (res);
 }
 
 // int main(void)
 // {
-// 	char *s1 = "aaaiheabaaa";
+// 	char *s1 = "aaaaaihebaaaa";
 // 	char *set = "a";
 // 	char *res = ft_strtrim(s1, set);
 // 	printf("%s", res);
 // 	free(res);
-// 	return 0;	
 // }

@@ -6,7 +6,7 @@
 /*   By: ihhadjal <ihhadjal@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/08 21:45:06 by ihhadjal          #+#    #+#             */
-/*   Updated: 2024/11/10 18:51:38 by ihhadjal         ###   ########.fr       */
+/*   Updated: 2024/11/12 15:55:22 by ihhadjal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,18 +14,28 @@
 
 void	*ft_calloc(size_t nmemb, size_t size)
 {
+	size_t	total_size;
 	void	*tab;
+	char	*cases;
+	size_t	i;
 
-	if ((int)nmemb < 0 && (int)size < 0)
+	total_size = nmemb * size;
+	if (nmemb == 0 || size == 0)
+	{
+		tab = malloc(0);
+		return (tab);
+	}
+	if ((int)nmemb < 0 || (int)size < 0)
 		return (NULL);
-	tab = (void *)malloc(nmemb * size);
-	if (!tab)
+	tab = malloc(total_size);
+	if (tab == NULL)
 		return (NULL);
-	ft_bzero(tab, nmemb * size);
+	cases = (char *)tab;
+	i = 0;
+	while (i < total_size)
+	{
+		cases[i] = 0;
+		i++;
+	}
 	return (tab);
 }
-
-// int main(void)
-// {
-// 	printf("%p\n", ft_calloc(-5, -5));
-// }

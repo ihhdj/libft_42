@@ -5,79 +5,83 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: ihhadjal <ihhadjal@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/10 18:55:33 by ihhadjal          #+#    #+#             */
-/*   Updated: 2024/11/10 18:57:50 by ihhadjal         ###   ########.fr       */
+/*   Created: 2024/11/11 15:54:08 by ihhadjal          #+#    #+#             */
+/*   Updated: 2024/11/12 16:41:03 by ihhadjal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int	count_words(char const *s, char c)
+static int	ft_count_word(char const *s, char sep)
 {
 	int	i;
-	int	res;
-	int	flag;
+	int	j;
 
 	i = 0;
-	res = 0;
-	flag = 0;
+	j = 0;
 	while (s[i])
 	{
-		if (s[i] != c)
-		{
-			if (!flag)
-			{
-				res++;
-				flag = 1;
-			}
-		}
-		else
-			flag = 0;
-		i++;
+		while (s[i] == sep && s[i])
+			i++;
+		if (s[i])
+			j++;
+		while (s[i] != sep && s[i])
+			i++;
 	}
-	return (res);
+	return (j);
 }
 
-static char	*fill_str_with(char const *s, int start, int end)
+static int	ft_cpy(char **res, const char *s, char sep)
 {
-	char	*fill;
-	int		i;
+	int	len;
+	int	i;
 
 	i = 0;
-	fill = malloc(sizeof(char) * (end - start + 1));
-	if (!fill)
-		return (NULL);
-	while (start < end)
-		fill[i++] = s[start++];
-	fill[i] = 0;
-	return (fill);
+	while (*s)
+	{
+		len = 0;
+		while (*s == sep && *s)
+			s++;
+		while (*s != sep && *s)
+		{
+			len++;
+			s++;
+		}
+		if (len > 0)
+		{
+			res[i] = malloc(len + 1);
+			if (res[i] == NULL)
+				return (-1);
+			ft_strlcpy(res[i], s - len, len + 1);
+			i++;
+		}
+	}
+	return (0);
 }
 
 char	**ft_split(char const *s, char c)
 {
-	char		**split;
-	int			size;
-	int			i;
-	int			end;
-	int			start;
+	int		mots;
+	char	**res;
 
-	i = 0;
-	start = 0;
-	size = count_words(s, c);
-	split = malloc(sizeof(char *) * (size + 1));
-	if (!split)
+	if (!s)
 		return (NULL);
-	while (i < size)
-	{
-		while (s[start] == c && s[start])
-			start++;
-		end = start + 1;
-		while (s[end] != c && s[end])
-			end++;
-		split[i] = fill_str_with(s, start, end);
-		start = end + 1;
-		i++;
-	}
-	split[i] = NULL;
-	return (split);
+	mots = ft_count_word(s, c);
+	res = malloc(sizeof(char *) * (mots + 1));
+	if (!res)
+		return (NULL);
+	res[mots] = NULL;
+	ft_cpy(res, s, c);
+	return (res);
 }
+
+// int main (void)
+// {
+// 	char *s = "salut iheb comment ca va        ";
+// 	char **res = ft_split(s, ' ');
+// 	while (*res)
+// 	{
+// 		printf("%s\n", *res);
+// 		res++;
+// 	}
+// }

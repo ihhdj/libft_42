@@ -6,13 +6,13 @@
 /*   By: ihhadjal <ihhadjal@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/10 11:20:59 by ihhadjal          #+#    #+#             */
-/*   Updated: 2024/11/10 13:21:26 by ihhadjal         ###   ########.fr       */
+/*   Updated: 2024/11/11 15:51:27 by ihhadjal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	count_len(int nb)
+static int	count_len(int nb)
 {
 	int	res;
 
