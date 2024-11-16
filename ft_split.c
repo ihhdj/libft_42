@@ -6,7 +6,7 @@
 /*   By: ihhadjal <ihhadjal@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 15:54:08 by ihhadjal          #+#    #+#             */
-/*   Updated: 2024/11/14 13:58:56 by ihhadjal         ###   ########.fr       */
+/*   Updated: 2024/11/16 10:06:13 by ihhadjal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,9 +34,7 @@ static int	ft_count_word(char const *s, char sep)
 static char	*ft_cpy(char **res, const char *s, char sep)
 {
 	int	len;
-	int	i;
 
-	i = 0;
 	while (*s)
 	{
 		len = 0;
@@ -49,14 +47,14 @@ static char	*ft_cpy(char **res, const char *s, char sep)
 		}
 		if (len > 0)
 		{
-			res[i] = malloc(len + 1);
-			if (res[i] == NULL)
+			*res = malloc(len + 1);
+			if (*res == NULL)
 				return (NULL);
-			ft_strlcpy(res[i], s - len, len + 1);
-			i++;
+			ft_strlcpy(*res, s - len, len + 1);
+			res++;
 		}
 	}
-	return (res[i]);
+	return (*res);
 }
 
 char	**ft_split(char const *s, char c)
@@ -75,13 +73,13 @@ char	**ft_split(char const *s, char c)
 	return (res);
 }
 
-int main (void)
-{
-	char *s = "salut iheb comment ca va        ";
-	char **res = ft_split(s, ' ');
-	while (*res)
-	{
-		printf("%s\n", *res);
-		res++;
-	}
-}
+// int main (void)
+// {
+// 	char *s = "salut iheb comment ca va        ";
+// 	char **res = ft_split(s, ' ');
+// 	while (*res)
+// 	{
+// 		printf("%s\n", *res);
+// 		res++;
+// 	}
+// }
